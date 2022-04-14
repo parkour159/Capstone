@@ -2995,17 +2995,17 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.28617096, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.28617048, b: 0.50980073, a: 1}
   colorDepth: 0.8
-  horizonColor: {r: 0, g: 0.22734746, b: 0.8, a: 1}
+  horizonColor: {r: 0, g: 0.22734699, b: 0.8, a: 1}
   horizonDistance: 20
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.30185726, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.3018568, a: 0}
   shoreStrength: 0
   shoreBlend: 1
   shoreDepth: 0.74
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.20382345, g: 0.30970037, b: 0.517647, a: 0}
+  underwaterColor: {r: 0.203823, g: 0.3096999, b: 0.517647, a: 0}
   underwaterColorStrength: 0
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}

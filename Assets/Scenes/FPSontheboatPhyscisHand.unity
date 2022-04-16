@@ -3169,6 +3169,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
+
   deepColor: {r: 0.01176471, g: 0.2861678, b: 0.50980073, a: 1}
   colorDepth: 0.8
   horizonColor: {r: 0, g: 0.2273443, b: 0.8, a: 1}

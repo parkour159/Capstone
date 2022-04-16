@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Materials/Enemy.meta
 guid: e503b85f5f4c45246a4c1e1df70c5661
+=======
+guid: d7b8f7590694abc4dad9eb3fdc73836d
+>>>>>>> Stashed changes:Assets/XR.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

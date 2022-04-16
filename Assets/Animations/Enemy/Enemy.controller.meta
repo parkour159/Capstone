@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Animations/Enemy/Enemy.controller.meta
 guid: 99b507380ac992444b0e3b5ee63f78cf
+=======
+guid: 763b1a56872d8b24a90eafff6f703794
+>>>>>>> Stashed changes:Assets/XR/Loaders/Oculus Loader.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000

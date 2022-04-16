@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Materials/Enemy/tmp_enemy.mat.meta
 guid: 1bd53cdefaa6bc948bff7c68d10825fb
+=======
+guid: 3b238c225384b484f955934093088c6c
+>>>>>>> Stashed changes:Assets/XR/Settings/Oculus Settings.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000

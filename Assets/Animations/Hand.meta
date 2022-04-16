@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Animations/Hand.meta
 guid: 13a205a3c9a9fba4199a575d21c84601
+=======
+guid: 2460d90c38fee1f4f97e1aea718670ab
+>>>>>>> Stashed changes:Assets/XR/Loaders.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

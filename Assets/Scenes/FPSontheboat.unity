@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1736,7 +1736,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -3715,6 +3715,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88607b71167673f47b896f7c648ec7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  inputSource: 0
   additionalHeight: 0.2
   boatLayer:
     serializedVersion: 2
@@ -6497,10 +6499,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2171840baef484cb2c72e47bf72513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTriggered: 0
+  oarTriggerEnterPos: {x: 0, y: 0, z: 0}
+  oarTriggerExitPos: {x: 0, y: 0, z: 0}
+  _currentBoatPos: {x: 0, y: 0, z: 0}
+  _previousBoatPos: {x: 0, y: 0, z: 0}
   paddlingForce: 1
+  reversePaddlingForce: 1.5
   dragForce: 0.5
-  rotationForce: 0.7
+  rightRotationForce: 0.7
+  leftRotationForce: -0.7
+  minTermBetweentPaddling: 0.2
   paddle: {fileID: 8863250730071011028}
+  player: {fileID: 0}
 --- !u!1 &7633304301135573720
 GameObject:
   m_ObjectHideFlags: 0
@@ -9415,7 +9426,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -9515,6 +9526,7 @@ MonoBehaviour:
   secondHandGrabPoints:
   - {fileID: 1669855411}
   lookRotationOffset: {x: -90, y: 0, z: 0}
+  secondInteractor: {fileID: 0}
   twoHandRotationType: 0
   snapToSecondHand: 1
 --- !u!4 &8863250730505931588

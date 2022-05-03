@@ -17,6 +17,7 @@ public class MoveEnemy : MonoBehaviour
     float attackDelay = 1;
     public AudioSource GunShotAudio;
     public GameObject muzzle, firePos, bullet;
+    RaycastHit hit;
 
     void Start()
     {
@@ -60,6 +61,13 @@ public class MoveEnemy : MonoBehaviour
     {
         enemyAvatar.transform.LookAt(player);
         ani.SetTrigger("Attack");
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        {
+            if (hit.collider.gameObject.tag == "Map")
+            {
+                attackDist /= 2;
+            }
+        }
         if (Vector3.Distance(transform.position, player.position) <= attackDist)
         {
             currentTime += Time.deltaTime;

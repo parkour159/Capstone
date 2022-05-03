@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, 1);
         src = this.GetComponentInParent<Transform>();
-        dst = GameObject.Find("Final_Boat").transform;
+        dst = GameObject.Find("Player").transform;
         dir = dst.position - src.position;
         dir += new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0);
     }
@@ -20,5 +20,10 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.position += speed * dir.normalized * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(this.gameObject);
     }
 }

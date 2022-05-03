@@ -45,7 +45,7 @@ public class PlayerHP : MonoBehaviour
 
     IEnumerator DamageScreen()
     {
-        damageScreen.color = new Color(1, 0, 0, Random.Range(0.2f, 0.3f));
+        damageScreen.color = new Color(1, 0, 0, Random.Range(0.5f, 0.6f));
         yield return new WaitForSeconds(0.5f);
         damageScreen.color = Color.clear;
     }
@@ -55,7 +55,6 @@ public class PlayerHP : MonoBehaviour
         if(other.CompareTag("Bullet"))
         {
             beShotSound[(int)Random.Range(0, 3.9f)].Play();
-            Destroy(other.gameObject);
             StartCoroutine(DamageScreen());
             hp -= Random.Range(4, 7);
         }

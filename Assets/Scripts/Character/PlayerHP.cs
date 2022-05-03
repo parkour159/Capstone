@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHP : MonoBehaviour
 {
     public AudioSource[] beShotSound;
-    Text hpText;
+    TextMeshProUGUI hpText;
     Image damageScreen;
     public int hp = 100;
     public float hpRecoveryDelay = 3;
@@ -15,7 +16,7 @@ public class PlayerHP : MonoBehaviour
 
     void Start()
     {
-        hpText = GameObject.Find("HP").GetComponent<Text>();
+        hpText = GameObject.Find("HP").GetComponent<TextMeshProUGUI>();
         damageScreen = GameObject.Find("DamageScreen").GetComponent<Image>();
     }
 

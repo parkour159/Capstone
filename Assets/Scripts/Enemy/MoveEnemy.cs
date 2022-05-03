@@ -8,13 +8,15 @@ public class MoveEnemy : MonoBehaviour
 {
     public enum State { MOVE, ATTACK, DIE }
     public State state;
-    public GameObject enemyAvatar;
+    public GameObject enemyAvatar, boat, gun;
     Transform player;
     NavMeshAgent enemyAgent;
     public Animator ani;
     public float attackDist;
     float currentTime = 0;
-    float attackDelay = 3f;
+    float attackDelay = 1;
+    public AudioSource GunShotAudio;
+    public GameObject muzzle, firePos, bullet;
 
     void Start()
     {
@@ -27,6 +29,7 @@ public class MoveEnemy : MonoBehaviour
 
     void Update()
     {
+        enemyAvatar.transform.position = boat.transform.position + new Vector3(0, -0.4f, 0);
         if (state == State.MOVE)
         {
             Move();
@@ -39,7 +42,7 @@ public class MoveEnemy : MonoBehaviour
 
     void Move()
     {
-        enemyAvatar.transform.localPosition = new Vector3(0, -1.82f, 0);
+        enemyAvatar.transform.localEulerAngles = new Vector3(0, 0, 0);
         ani.SetTrigger("Move");
         if (Vector3.Distance(transform.position, player.position) > attackDist)
         {
@@ -55,7 +58,6 @@ public class MoveEnemy : MonoBehaviour
 
     void Attack()
     {
-        enemyAvatar.transform.localPosition = new Vector3(0, -0.82f, 0);
         enemyAvatar.transform.LookAt(player);
         ani.SetTrigger("Attack");
         if (Vector3.Distance(transform.position, player.position) <= attackDist)
@@ -64,6 +66,7 @@ public class MoveEnemy : MonoBehaviour
             if (currentTime > attackDelay)
             {
                 // 공격
+                GunFire();
                 currentTime = 0;
             }
         }
@@ -72,5 +75,23 @@ public class MoveEnemy : MonoBehaviour
             state = State.MOVE;
             currentTime = 0;
         }
+    }
+
+    void GunFire()
+    {
+        GunShotAudio.Play();
+        if (gameObject.tag == "Pistol")
+        {
+            firePos.transform.localPosition = new Vector3(0, 0, -0.15f);
+            attackDelay = 1.167f;
+        }
+        else if (gameObject.tag == "Rifle")
+        {
+            firePos.transform.localPosition = new Vector3(0, 0, -0.45f);
+            attackDelay = 1.1f;
+        }
+        firePos.transform.localEulerAngles = new Vector3(0, 90, 0);
+        Instantiate(muzzle, firePos.transform);
+        Instantiate(bullet, firePos.transform.position, Quaternion.identity);
     }
 }

@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public GameObject enemy, gun;
+    public GameObject enemy, gun, enemyAvatar;
     public Transform rightHand;
 
     void Start()
     {
         gun.SetActive(false);
-        gun.transform.eulerAngles = new Vector3(0, -180, 0);
     }
 
     void Update()
     {
         gun.transform.position = rightHand.position;
-
+        gun.transform.localEulerAngles = enemyAvatar.transform.localEulerAngles + new Vector3(0, -180, 0);
         if (enemy.GetComponent<MoveEnemy>().state == MoveEnemy.State.ATTACK)
         {
             gun.SetActive(true);

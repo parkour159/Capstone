@@ -2189,11 +2189,14 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 060420b26d3644040b9d1af1c5ba3c95, type: 3}
---- !u!1 &3449902539743620800
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1aa08287f624144aa1dfaa174174153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 3816900477044777527}
+  gun: {fileID: 1244555385027699386}
+  rightHand: {fileID: 6548851913302184637}
+--- !u!1 &3816900477192315336
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -90,14 +90,12 @@ public class Paddling : MonoBehaviour
                     if (_oarDir.z < 0)
                     {
                         totalRotationForce = _oarDir.x * 0.6f + _oarDir.z * 0.4f + 1 / oarTriggerStayTime * leftRotationForce;
-                        Debug.Log("보트 오른쪽 반시계방향");
                     }
 
                     // 뒤에서 앞으로 젓는다면 보트는 시계방향(오른쪽)으로 힘을 받는다.
                     else
                     {
                         totalRotationForce = _oarDir.x * 0.6f + _oarDir.z * 0.4f + 1 / oarTriggerStayTime * rightRotationForce;
-                        Debug.Log("보트 오른쪽 시계방향");
                     }
                 }
 
@@ -108,14 +106,12 @@ public class Paddling : MonoBehaviour
                     if (_oarDir.z < 0)
                     {
                         totalRotationForce = _oarDir.x * 0.6f + _oarDir.z * 0.4f + 1 / oarTriggerStayTime * rightRotationForce;
-                        Debug.Log("보트 왼쪽 시계방향");
                     }
 
                     // 뒤에서 앞으로 젓는다면 보트는 반시계방향(왼쪽)으로 힘을 받는다.
                     else
                     {
                         totalRotationForce = _oarDir.x * 0.6f + _oarDir.z * 0.4f + 1 / oarTriggerStayTime * leftRotationForce;
-                        Debug.Log("보트 왼쪽 반시계방향");
                     }
                 }
 
@@ -142,19 +138,16 @@ public class Paddling : MonoBehaviour
                 // 노를 보트의 오른쪽 방향에서
                 if (oarTriggerEnterPos.x > _previousBoatPos.x)
                 {
-                    Debug.Log("노의 위치 : " + oarTriggerEnterPos.x + " 배의 위치 : " + _currentBoatPos.x);
                     // 앞에서 뒤로 젓는다면 보트는 반시계방향(왼쪽)으로 힘을 받는다.
                     if (_oarDir.z < 0)
                     {
                         totalRotationForce = _oarDir.x * 0.6f + _oarDir.z * 0.4f + 1 / oarTriggerStayTime * leftRotationForce;
-                        Debug.Log("진행 중인 보트 오른쪽 반시계방향");
                     }
 
                     // 뒤에서 앞로 젓는다면 보트는 시계방향(오른쪽)으로 힘을 받는다.
                     else
                     {
                         totalRotationForce = _oarDir.x * 0.6f + _oarDir.z * 0.4f + 1 / oarTriggerStayTime * rightRotationForce;
-                        Debug.Log("진행 중인 보트 오른쪽 시계방향");
                     }
                 }
 
@@ -165,14 +158,12 @@ public class Paddling : MonoBehaviour
                     if (_oarDir.z < 0)
                     {
                         totalRotationForce = _oarDir.x * 0.6f + _oarDir.z * 0.4f + 1 / oarTriggerStayTime * rightRotationForce;
-                        Debug.Log("진행 중인 보트 왼쪽 시계방향");
                     }
 
                     // 뒤에서 앞로 젓는다면 보트는 반시계방향(왼쪽)으로 힘을 받는다.
                     else
                     {
                         totalRotationForce = _oarDir.x * 0.6f + _oarDir.z * 0.4f + 1 / oarTriggerStayTime * leftRotationForce;
-                        Debug.Log("진행 중인 보트 왼쪽 반시계방향");
                     }
                 }
 
@@ -183,7 +174,6 @@ public class Paddling : MonoBehaviour
                     totalPaddlingForce = _oarDir.z + 1 / oarTriggerStayTime * paddlingForce;
                     oarTriggerStayTime = 0f;
                     _rigidbody.AddRelativeForce(-_oarDir * totalPaddlingForce, ForceMode.Acceleration);
-                    //Debug.Log("가속 : " + _rigidbody.velocity);
                 }
 
                 else
@@ -192,7 +182,6 @@ public class Paddling : MonoBehaviour
                     totalPaddlingForce = _oarDir.z + 1 / oarTriggerStayTime * reversePaddlingForce;
                     oarTriggerStayTime = 0f;
                     _rigidbody.AddRelativeForce(-_oarDir * totalPaddlingForce, ForceMode.Acceleration);
-                    //Debug.Log("감속 : " + _rigidbody.velocity);
                 }
 
                 _rigidbody.AddRelativeTorque(transform.up * totalRotationForce, ForceMode.Acceleration);
@@ -210,7 +199,6 @@ public class Paddling : MonoBehaviour
                 {
                     _rigidbody.AddRelativeTorque(transform.up * leftRotationForce * 0.5f, ForceMode.Acceleration);
                 }
-                Debug.Log("브레이크 : " + _rigidbody.velocity);
             }
             coolDownTimer = 0f;
         }

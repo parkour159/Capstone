@@ -11,6 +11,7 @@ public class HandPresencePhysics : MonoBehaviour
     [SerializeField] float rotDamping = 0.9f;
     [SerializeField] Rigidbody playerRigidbody;
     [SerializeField] Transform target;
+    [SerializeField] SkinnedMeshRenderer handRenderer;
     Rigidbody _rigidbody;
 
     private Collider[] handColliders;
@@ -31,6 +32,7 @@ public class HandPresencePhysics : MonoBehaviour
         {
             item.enabled = true;
         }
+        handRenderer.enabled = true;
     }
 
     public void EnableHandColliderDelay(float delay)
@@ -44,6 +46,7 @@ public class HandPresencePhysics : MonoBehaviour
         {
             item.enabled = false;
         }
+        handRenderer.enabled = false;
     }
 
     void FixedUpdate()

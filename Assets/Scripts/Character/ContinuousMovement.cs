@@ -8,7 +8,7 @@ using Unity.XR.CoreUtils;
 public class ContinuousMovement : MonoBehaviour
 {
     public float speed = 1;
-    //public float gravity = -9.81f;
+    public float gravity = -9.81f;
     private Vector2 inputAxis;
     public XRNode inputSource;
 
@@ -24,6 +24,7 @@ public class ContinuousMovement : MonoBehaviour
         character = GetComponent<CapsuleCollider>();
         origin = GetComponent<XROrigin>();
         rigid = GetComponent<Rigidbody>();
+        Physics.gravity = new Vector3(0, -15f, 0);
     }
 
     void Update()
@@ -44,7 +45,6 @@ public class ContinuousMovement : MonoBehaviour
 
         // 캐릭터가 바라보는 방향을 정면으로 설정해서 이동하도록 함.
         // 캐릭터의 이동은 물리적인 동작이므로 Time.fixedDeltaTime을 사용함.
-        //character.Move(direction * Time.fixedDeltaTime * speed);
         rigid.velocity = direction.normalized * Time.fixedDeltaTime * speed;
         
         //캐릭터가 바닥에 닿아있는 상태인지 체크하여 중력을 적용함

@@ -41,8 +41,6 @@ public class EnemyFactory : MonoBehaviour
             {
                 count++;
                 enemy = Instantiate(enemyFac, this.transform.position, this.transform.rotation);
-                //enemy.transform.position = transform.position;
-                //enemy.transform.rotation = transform.rotation;
             }
             yield return new WaitForSeconds(creatTime);
         }

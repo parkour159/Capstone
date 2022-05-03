@@ -60,6 +60,13 @@ public class MoveEnemy : MonoBehaviour
     {
         enemyAvatar.transform.LookAt(player);
         ani.SetTrigger("Attack");
+        if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
+        {
+            if(hit.transform.gameObject.tag == "Map")
+            {
+                attackDist /= 2;
+            }
+        }
         if (Vector3.Distance(transform.position, player.position) <= attackDist)
         {
             currentTime += Time.deltaTime;

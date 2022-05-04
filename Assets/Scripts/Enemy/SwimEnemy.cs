@@ -1,16 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MoveEnemy : MonoBehaviour
+public class SwimEnemy : MonoBehaviour
 {
     public enum State { MOVE, ATTACK, DIE }
     public State state;
-    public GameObject enemyAvatar, boat, gun;
+    public GameObject enemyAvatar, gun;
     Transform player;
-    NavMeshAgent enemyAgent;
     public Animator ani;
     public float attackDist;
     float currentTime = 0;
@@ -22,15 +20,12 @@ public class MoveEnemy : MonoBehaviour
     void Start()
     {
         state = State.MOVE;
-        player = GameObject.Find("Final_Boat").transform;
-        enemyAgent = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player").transform;
         attackDist = UnityEngine.Random.Range(7f, 30f);
-        GetComponent<NavMeshAgent>().speed = UnityEngine.Random.value * 5 + 0.5f;
     }
 
     void Update()
     {
-        enemyAvatar.transform.position = boat.transform.position + new Vector3(0, -0.4f, 0);
         if (state == State.MOVE)
         {
             Move();
@@ -47,8 +42,10 @@ public class MoveEnemy : MonoBehaviour
         ani.SetTrigger("Move");
         if (Vector3.Distance(transform.position, player.position) > attackDist)
         {
-            enemyAgent.stoppingDistance = attackDist;
-            enemyAgent.SetDestination(player.position);
+            Vector3 dir = player.position - transform.position;
+            dir = dir.normalized;
+            transform.position += dir * (Random.value * 5 + 0.5f) * Time.deltaTime;
+            transform.rotation = Quaternion.LookRotation(dir);
         }
         else
         {
@@ -73,7 +70,7 @@ public class MoveEnemy : MonoBehaviour
             currentTime += Time.deltaTime;
             if (currentTime > attackDelay)
             {
-                // ê³µê²©
+                // °ø°Ý
                 GunFire();
                 currentTime = 0;
             }

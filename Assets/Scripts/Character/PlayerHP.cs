@@ -12,6 +12,7 @@ public class PlayerHP : MonoBehaviour
     public int hp = 100;
     public float hpRecoveryDelay = 3;
     public int hpRecoveryVolume = 10;
+    public int damage;
     float currentTime = 0;
 
     void Start()
@@ -24,7 +25,14 @@ public class PlayerHP : MonoBehaviour
     {
         hpText.text = "" + hp;
         if (hp <= 0)
+        {
             hp = 0;
+            GameObject enemyFac = GameObject.Find("EnemyFactory");
+            GameObject[] pistolEnemy = GameObject.FindGameObjectsWithTag("Pistol");
+            GameObject[] rifleEnemy = GameObject.FindGameObjectsWithTag("Rifle");
+            DestroyObject(enemyFac); DestroyObject(pistolEnemy); DestroyObject(rifleEnemy);
+        }
+            
         else if (hp >= 100)
             hp = 100;
 
@@ -35,7 +43,7 @@ public class PlayerHP : MonoBehaviour
 
         if (currentTime > hpRecoveryDelay)
         {
-            if (hp < 100)
+            if (hp < 100 && hp > 0)
             {
                 hp += hpRecoveryVolume;
                 currentTime = 0;
@@ -57,7 +65,20 @@ public class PlayerHP : MonoBehaviour
         {
             beShotSound[(int)Random.Range(0, 3.9f)].Play();
             StartCoroutine(DamageScreen());
-            hp -= Random.Range(4, 7);
+            hp -= (int)Random.Range(1, 2) * damage;
+        }
+    }
+
+    void DestroyObject(GameObject target)
+    {
+        Destroy(target);
+    }
+
+    void DestroyObject(GameObject[] target)
+    {
+        for(int i = 0; i< target.Length; i++)
+        {
+            Destroy(target[i]);
         }
     }
 }

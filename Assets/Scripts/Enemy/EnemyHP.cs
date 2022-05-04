@@ -4,27 +4,19 @@ using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
-    private int hp = 100;
+    public int hp;
     public int damage;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        hp = 100;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Bullet"))
+        if(hp <= 0)
         {
-            Destroy(other.gameObject);
-            hp -= (int)Random.Range(2f, 4.5f) * damage;
+            Destroy(gameObject);
         }
     }
 }

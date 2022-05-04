@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeadZone : MonoBehaviour
+public class BodyZone : MonoBehaviour
 {
     public EnemyHP enemyHP;
     public ParticleSystem bloodFX;
@@ -18,7 +18,7 @@ public class HeadZone : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            enemyHP.hp = 0;
+            enemyHP.hp -= (int)Random.Range(3f, 5.9f) * enemyHP.damage;
             ParticleSystem effect = Instantiate(bloodFX, other.transform.position, Quaternion.LookRotation(player.transform.position - other.transform.position));
             effect.Play();
         }

@@ -191,6 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5520701035706255421}
   - component: {fileID: 595200256945738057}
+  - component: {fileID: 1898727407699947154}
   m_Layer: 0
   m_Name: mixamorig:Hips
   m_TagString: Untagged
@@ -229,6 +230,20 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: -0.4, z: 0}
+--- !u!114 &1898727407699947154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595200256945738056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c93ad46489930d4eb20f3e622fecb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHP: {fileID: 4226731147617830116}
+  bloodFX: {fileID: 19886758, guid: 8c27aeead6d968e4ba986702d6b84335, type: 3}
 --- !u!1 &660337134257579575
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,7 +914,6 @@ GameObject:
   m_Component:
   - component: {fileID: 57749216166504617}
   - component: {fileID: 6209626400519140051}
-  - component: {fileID: 830626298397799020}
   m_Layer: 0
   m_Name: Remy
   m_TagString: Untagged
@@ -948,20 +962,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &830626298397799020
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830626298397798931}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.7
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.7, z: 0}
 --- !u!1 &1123218047392246570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,6 +1934,7 @@ GameObject:
   - component: {fileID: 3449902539245909135}
   - component: {fileID: 3449902539245909128}
   - component: {fileID: 3449902539245909132}
+  - component: {fileID: 4226731147617830116}
   m_Layer: 0
   m_Name: Enemy_Pistol
   m_TagString: Pistol
@@ -2067,6 +2068,20 @@ MonoBehaviour:
   gun: {fileID: 746843622399128583}
   enemyAvatar: {fileID: 830626298397798931}
   rightHand: {fileID: 4754372701441623040}
+--- !u!114 &4226731147617830116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449902539245909130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a74bff643436866459755a650db84b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  damage: 10
 --- !u!1 &3449902539326064830
 GameObject:
   m_ObjectHideFlags: 0
@@ -3815,6 +3830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6242473333459024426}
   - component: {fileID: 6917751654911265833}
+  - component: {fileID: 2363705796260215790}
   m_Layer: 0
   m_Name: mixamorig:Head
   m_TagString: Untagged
@@ -3852,6 +3868,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.3
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!114 &2363705796260215790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6917751654911265830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5ce48927cf4224fa037dcbfb06ecd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHP: {fileID: 4226731147617830116}
+  bloodFX: {fileID: 19886758, guid: 8c27aeead6d968e4ba986702d6b84335, type: 3}
 --- !u!1 &7023300662531910370
 GameObject:
   m_ObjectHideFlags: 0

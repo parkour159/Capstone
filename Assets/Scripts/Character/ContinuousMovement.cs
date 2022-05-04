@@ -17,7 +17,7 @@ public class ContinuousMovement : MonoBehaviour
     private CapsuleCollider character;
     private Rigidbody rigid;
     private float fallingSpeed;
-    public LayerMask boatLayer;
+    public LayerMask groundLayer;
 
     void Start()
     {
@@ -73,7 +73,7 @@ public class ContinuousMovement : MonoBehaviour
 
         // 캐릭터의 Radius와 같은 두께의 Raycast를 발사함.
         // 충돌이 되면 True를 반환하며 Raycast와 충돌한 오브젝트와의 거리, 위치 등의 정보를 hitInfo 변수에 저장함.
-        bool hasHit = Physics.SphereCast(rayStart, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, boatLayer);
+        bool hasHit = Physics.SphereCast(rayStart, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
         return hasHit;
     }
 }

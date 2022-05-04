@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: f07b22a0ab8cdb64286d1306fd861760
+  - enabled: 1
+    path: Assets/Scenes/FPSontheboatPhyscisHand.unity
+    guid: 72b96e79a133a8049a44e79ea6fcaa99
+  - enabled: 1
+    path: Assets/Scenes/FPSUnderWater.unity
+    guid: 05b5a9acda19e6047ac1d94b83e49772
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 182eac8cb54f06d4e8f3aa8a6d307c55, type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: cf6e190bd64c5a644ba81d76fa2b0207, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f5e2489c0b3b9f64ea5df067f9f30a08, type: 2}

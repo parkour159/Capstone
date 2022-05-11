@@ -8,6 +8,8 @@ public class AK74Fire : MonoBehaviour
     public GameObject bullet;
     public Transform barrel;
     public SetGunPos setGun;
+    public AudioClip ak74FireSound;
+    public GameObject ak74FireEffect;
 
     public void GrabGun()
     {
@@ -23,6 +25,8 @@ public class AK74Fire : MonoBehaviour
     {
         GameObject spawnBullet = Instantiate(bullet, barrel.position, barrel.rotation);
         spawnBullet.GetComponent<Rigidbody>().velocity = bulletSpeed * barrel.forward;
+        Instantiate(ak74FireEffect, barrel.transform.position, barrel.transform.rotation);
+        AudioSource.PlayClipAtPoint(ak74FireSound, transform.position);
         Destroy(spawnBullet, 2f);
     }
 }

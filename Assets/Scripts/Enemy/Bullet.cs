@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
         src = this.GetComponentInParent<Transform>();
         dst = GameObject.Find("Player").transform;
         dir = dst.position - src.position;
-        dir += new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0);
+        dir += new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0);
     }
 
     void Update()

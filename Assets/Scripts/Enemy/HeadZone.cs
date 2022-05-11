@@ -4,30 +4,23 @@ using UnityEngine;
 
 public class HeadZone : MonoBehaviour
 {
-    public GameObject head, body, enemy;
-    MoveEnemy me;
+    public EnemyHP enemyHP;
+    public ParticleSystem bloodFX;
 
-    void Start()
+    private GameObject player;
+
+    private void Start()
     {
-        me = enemy.GetComponent<MoveEnemy>();
+        player = GameObject.Find("Player");
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (me.state == MoveEnemy.State.MOVE)
+        if (other.CompareTag("Bullet"))
         {
-            head.transform.localPosition = new Vector3(0, 2.5f, 0);
-        }
-        else if (me.state == MoveEnemy.State.ATTACK)
-        {
-            if (gameObject.tag == "Pistol")
-            {
-                head.transform.localPosition = new Vector3(0, 3, 0);
-            }
-            else if (gameObject.tag == "Rifle")
-            {
-                head.transform.localPosition = new Vector3(0, 3.1f, 0);
-            }
+            enemyHP.hp = 0;
+            ParticleSystem effect = Instantiate(bloodFX, other.transform.position, Quaternion.LookRotation(player.transform.position - other.transform.position));
+            effect.Play();
         }
     }
 }

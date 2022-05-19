@@ -3373,6 +3373,7 @@ GameObject:
   - component: {fileID: 7744792638509292554}
   - component: {fileID: 7744792638509292557}
   - component: {fileID: 2384693868863361169}
+  - component: {fileID: -7129463604244273500}
   m_Layer: 0
   m_Name: Enemy_SwimPistol
   m_TagString: Pistol
@@ -3482,6 +3483,20 @@ MonoBehaviour:
   gun: {fileID: 7744792637208111972}
   enemyAvatar: {fileID: 7744792637902304224}
   rightHand: {fileID: 7744792638258051410}
+--- !u!114 &-7129463604244273500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7744792638509292559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a74bff643436866459755a650db84b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  damage: 10
 --- !u!1 &7744792638510406156
 GameObject:
   m_ObjectHideFlags: 0

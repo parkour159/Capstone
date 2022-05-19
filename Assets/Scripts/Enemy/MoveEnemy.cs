@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class MoveEnemy : MonoBehaviour
 {
-    public enum State { MOVE, ATTACK, DIE }
+    public enum State { MOVE, ATTACK }
     public State state;
     public GameObject enemyAvatar, boat, gun;
     Transform player;
@@ -22,15 +22,16 @@ public class MoveEnemy : MonoBehaviour
     void Start()
     {
         state = State.MOVE;
-        player = GameObject.Find("Final_Boat").transform;
+        player = GameObject.Find("Player").transform;
         enemyAgent = GetComponent<NavMeshAgent>();
         attackDist = UnityEngine.Random.Range(7f, 30f);
-        GetComponent<NavMeshAgent>().speed = UnityEngine.Random.value * 5 + 0.5f;
+        GetComponent<NavMeshAgent>().speed = UnityEngine.Random.value * 5 + 1;
     }
 
     void Update()
     {
         enemyAvatar.transform.position = boat.transform.position + new Vector3(0, -0.4f, 0);
+        boat.transform.position = new Vector3(transform.position.x, transform.position.y - 0.65f, transform.position.z);
         if (state == State.MOVE)
         {
             Move();

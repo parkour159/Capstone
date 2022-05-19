@@ -17,6 +17,7 @@ public class EnemyHP : MonoBehaviour
         if(hp <= 0)
         {
             Destroy(gameObject);
+            EnemyFactory.count--;
         }
     }
 }

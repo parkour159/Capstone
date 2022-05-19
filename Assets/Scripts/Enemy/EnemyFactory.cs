@@ -7,9 +7,10 @@ public class EnemyFactory : MonoBehaviour
     public static EnemyFactory instance;
     public GameObject enemyFac;
     public float creatTime;
-    public int maxCount = 2;
-    int count;
+    public int maxCount;
+    public static int count;
     GameObject enemy;
+
     public int COUNT
     {
         get { return count; }
@@ -31,6 +32,7 @@ public class EnemyFactory : MonoBehaviour
     {
         instance = this;
         creatTime = Random.value * 20 + 5;
+        maxCount = 20;
     }
 
     IEnumerator Start()
@@ -41,6 +43,7 @@ public class EnemyFactory : MonoBehaviour
             {
                 count++;
                 enemy = Instantiate(enemyFac, this.transform.position, this.transform.rotation);
+                /*Debug.Log(gameObject.name + ".,.," + count + ".,.,");*/
             }
             yield return new WaitForSeconds(creatTime);
         }

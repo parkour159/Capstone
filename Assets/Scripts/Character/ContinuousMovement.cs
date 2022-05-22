@@ -16,7 +16,6 @@ public class ContinuousMovement : MonoBehaviour
     private XROrigin origin;
     private CapsuleCollider character;
     private Rigidbody rigid;
-    private float fallingSpeed;
     public LayerMask groundLayer;
 
     void Start()
@@ -24,7 +23,6 @@ public class ContinuousMovement : MonoBehaviour
         character = GetComponent<CapsuleCollider>();
         origin = GetComponent<XROrigin>();
         rigid = GetComponent<Rigidbody>();
-        Physics.gravity = new Vector3(0, -15f, 0);
     }
 
     void Update()
@@ -41,19 +39,29 @@ public class ContinuousMovement : MonoBehaviour
 
         // VR Camera Rotation의 y값을 받아옴.
         Quaternion headYaw = Quaternion.Euler(0, origin.Camera.transform.eulerAngles.y, 0);
-        Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y);
-
-        // 캐릭터가 바라보는 방향을 정면으로 설정해서 이동하도록 함.
-        // 캐릭터의 이동은 물리적인 동작이므로 Time.fixedDeltaTime을 사용함.
-        rigid.velocity = direction.normalized * Time.fixedDeltaTime * speed;
+        
         
         //캐릭터가 바닥에 닿아있는 상태인지 체크하여 중력을 적용함
-        bool isBoat = CheckIfGrounded();
-        if (isBoat)
+        bool isGround = CheckIfGrounded();
+        if (isGround)
+        {
             rigid.useGravity = false;
+            Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y);
+
+            // 캐릭터가 바라보는 방향을 정면으로 설정해서 이동하도록 함.
+            // 캐릭터의 이동은 물리적인 동작이므로 Time.fixedDeltaTime을 사용함.
+            rigid.velocity = direction.normalized * Time.fixedDeltaTime * speed;
+
+        }
+
         else
-            rigid.useGravity = true;
-        //character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
+        {
+            if(gameObject.scene.name != "FPSUnderWater")
+            {
+                rigid.AddForce(gravity * Vector3.up, ForceMode.Acceleration);
+            }   
+        }
+            
     }
 
     /* 캐릭터의 높이를 VR Camera의 높이와 일치시킴. 
@@ -69,11 +77,12 @@ public class ContinuousMovement : MonoBehaviour
     bool CheckIfGrounded()
     {
         Vector3 rayStart = transform.TransformPoint(character.center); // 캐릭터 Center의 Local 좌표를 World 좌표로 변환하여 저장함.
-        float rayLength = character.center.y + 0.01f; // 캐릭터 Center의 높이보다 약간 더 길게 Raycast의 길이를 설정함.
+        float rayLength = character.center.y + 0.1f; // 캐릭터 Center의 높이보다 약간 더 길게 Raycast의 길이를 설정함.
 
         // 캐릭터의 Radius와 같은 두께의 Raycast를 발사함.
         // 충돌이 되면 True를 반환하며 Raycast와 충돌한 오브젝트와의 거리, 위치 등의 정보를 hitInfo 변수에 저장함.
         bool hasHit = Physics.SphereCast(rayStart, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
+        
         return hasHit;
     }
 }

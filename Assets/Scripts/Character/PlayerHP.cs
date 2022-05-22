@@ -31,6 +31,7 @@ public class PlayerHP : MonoBehaviour
             GameObject[] pistolEnemy = GameObject.FindGameObjectsWithTag("Pistol");
             GameObject[] rifleEnemy = GameObject.FindGameObjectsWithTag("Rifle");
             DestroyObject(enemyFac); DestroyObject(pistolEnemy); DestroyObject(rifleEnemy);
+            EnemyFactory.count = 0;
         }
             
         else if (hp >= 100)

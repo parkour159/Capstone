@@ -7,18 +7,25 @@ public class AK74Fire : MonoBehaviour
     public float bulletSpeed = 60f;
     public GameObject bullet;
     public Transform barrel;
-    public SetGunPos setGun;
     public AudioClip ak74FireSound;
     public GameObject ak74FireEffect;
 
+    private SetGunPos setGun;
+
+    private void Awake()
+    {
+        setGun = GameObject.Find("GunManager").GetComponent<SetGunPos>();
+    }
     public void GrabGun()
     {
-        setGun.isAK74Grabbed = true;
+        if (setGun != null)
+            setGun.isAK74Grabbed = true;
     }
 
     public void ReleaseGun()
     {
-        setGun.isAK74Grabbed = false;
+        if (setGun != null)
+            setGun.isAK74Grabbed = false;
     }
 
     public void Fire()

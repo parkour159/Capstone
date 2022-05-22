@@ -8,7 +8,7 @@ using TMPro;
 public class GameOverUI : MonoBehaviour
 {
     public PlayerHP playerHP;
-    public Transform camera;
+    public Transform playerCamera;
     public Transform setUIPos;
     public GameObject rightRay;
     public GameObject leftRay;
@@ -29,7 +29,7 @@ public class GameOverUI : MonoBehaviour
         {
             if(gameObject.GetComponent<Canvas>().enabled == false)
             gameObject.transform.position = setUIPos.position;
-            gameObject.transform.LookAt(camera);
+            gameObject.transform.LookAt(playerCamera);
             gameObject.GetComponent<Canvas>().enabled = true;
             rightRay.SetActive(true);
             leftRay.SetActive(true);

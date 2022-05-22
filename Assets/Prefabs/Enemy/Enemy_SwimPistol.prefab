@@ -1890,6 +1890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7744792637549784616}
   - component: {fileID: 7744792637549784617}
+  - component: {fileID: 6389895092114993272}
   m_Layer: 0
   m_Name: mixamorig:Hips
   m_TagString: Untagged
@@ -1928,6 +1929,20 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: -0.4, z: 0}
+--- !u!114 &6389895092114993272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7744792637549784619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c93ad46489930d4eb20f3e622fecb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHP: {fileID: -7129463604244273500}
+  bloodFX: {fileID: 19886758, guid: 8c27aeead6d968e4ba986702d6b84335, type: 3}
 --- !u!1 &7744792637557493516
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,6 +2309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7744792637741840925}
   - component: {fileID: 7744792637741840922}
+  - component: {fileID: 8220230089663641905}
   m_Layer: 0
   m_Name: mixamorig:Head
   m_TagString: Untagged
@@ -2331,6 +2347,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.3
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!114 &8220230089663641905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7744792637741840924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5ce48927cf4224fa037dcbfb06ecd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHP: {fileID: -7129463604244273500}
+  bloodFX: {fileID: 19886758, guid: 8c27aeead6d968e4ba986702d6b84335, type: 3}
 --- !u!1 &7744792637773521960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3495,7 +3525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74bff643436866459755a650db84b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  hp: 100
   damage: 10
 --- !u!1 &7744792638510406156
 GameObject:

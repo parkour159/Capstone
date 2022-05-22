@@ -6,22 +6,29 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class M1911Fire : MonoBehaviour
 {
-    public XRController hand;
     public float bulletSpeed = 40f;
     public GameObject bullet;
     public Transform barrel;
-    public SetGunPos setGun;
     public AudioClip m1911FireSound;
     public GameObject m1911FireEffect;
 
+    private SetGunPos setGun;
+
+    private void Awake()
+    {
+        setGun = GameObject.Find("GunManager").GetComponent<SetGunPos>();
+    }
+
     public void GrabGun()
     {
-        setGun.isM1911Grabbed = true;
+        if (setGun != null)
+            setGun.isM1911Grabbed = true;
     }
 
     public void ReleaseGun()
     {
-        setGun.isM1911Grabbed = false;
+        if (setGun != null)
+            setGun.isM1911Grabbed = false;
     }
 
     public void Fire()

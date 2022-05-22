@@ -25,7 +25,6 @@ public class Paddling : MonoBehaviour
     Vector3 _oarDir;
     float oarTriggerStayTime = 0f;
     float boatMinVelocity = 0.05f;
-    float boatMinAngularVelocity = 0.1f;
     float totalPaddlingForce = 0f;
     float totalRotationForce = 0f;
     float coolDownTimer = 0f;
@@ -63,12 +62,6 @@ public class Paddling : MonoBehaviour
         {
             player.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
         }
-        // 보트의 각도에 변화가 생기면 플레이어의 rotation의 y축과 보트의 rotation의 y축을 일치시키는 코드
-        //if (_rigidbody.angularVelocity.sqrMagnitude > boatMinAngularVelocity * boatMinAngularVelocity)
-        //{
-        //    player.rotation = Quaternion.Euler(new Vector3(player.rotation.x, transform.localRotation.eulerAngles.y, player.rotation.z));
-        //    Debug.Log("Rotation : " + player.rotation.eulerAngles + ", " + transform.rotation.eulerAngles);
-        //}
 
     }
 

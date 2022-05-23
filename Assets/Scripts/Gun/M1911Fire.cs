@@ -13,22 +13,55 @@ public class M1911Fire : MonoBehaviour
     public GameObject m1911FireEffect;
 
     private SetGunPos setGun;
+    private Swimmer swimmer;
 
     private void Awake()
     {
-        setGun = GameObject.Find("GunManager").GetComponent<SetGunPos>();
+        if (gameObject.scene.name == "FPSUnderWater")
+        {
+            swimmer = GameObject.Find("Player").GetComponent<Swimmer>();
+        }
+        else if (gameObject.scene.name == "FPSontheboatPhyscisHand")
+        {
+            setGun = GameObject.Find("GunManager").GetComponent<SetGunPos>();
+        }
     }
 
     public void GrabGun()
     {
-        if (setGun != null)
-            setGun.isM1911Grabbed = true;
+        if (gameObject.scene.name == "FPSUnderWater")
+        {
+            if (swimmer != null)
+            {
+                swimmer.isGunGrabbed = true;
+            }
+        }
+        else if (gameObject.scene.name == "FPSontheboatPhyscisHand")
+        {
+            if (setGun != null)
+            {
+                setGun.isM1911Grabbed = true;
+            }
+        }
+
     }
 
     public void ReleaseGun()
     {
-        if (setGun != null)
-            setGun.isM1911Grabbed = false;
+        if (gameObject.scene.name == "FPSUnderWater")
+        {
+            if (swimmer != null)
+            {
+                swimmer.isGunGrabbed = false;
+            }
+        }
+        else if (gameObject.scene.name == "FPSontheboatPhyscisHand")
+        {
+            if (setGun != null)
+            {
+                setGun.isM1911Grabbed = false;
+            }
+        }
     }
 
     public void Fire()

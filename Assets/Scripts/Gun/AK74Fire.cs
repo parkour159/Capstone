@@ -9,23 +9,74 @@ public class AK74Fire : MonoBehaviour
     public Transform barrel;
     public AudioClip ak74FireSound;
     public GameObject ak74FireEffect;
+    public GameObject[] secondGrabPoints;
 
     private SetGunPos setGun;
+    private Swimmer swimmer;
 
     private void Awake()
     {
-        setGun = GameObject.Find("GunManager").GetComponent<SetGunPos>();
+        if(gameObject.scene.name == "FPSUnderWater")
+        {
+            swimmer = GameObject.Find("Player").GetComponent<Swimmer>();
+        }
+        else if(gameObject.scene.name == "FPSontheboatPhyscisHand")
+        {
+            setGun = GameObject.Find("GunManager").GetComponent<SetGunPos>();
+        }
+        for(int i = 0; i<secondGrabPoints.Length; i++)
+        {
+            secondGrabPoints[i].SetActive(false);
+        }
     }
     public void GrabGun()
     {
-        if (setGun != null)
-            setGun.isAK74Grabbed = true;
+        if (gameObject.scene.name == "FPSUnderWater")
+        {
+            if(swimmer != null)
+            {
+                swimmer.isGunGrabbed = true;
+            }
+        }
+        else if (gameObject.scene.name == "FPSontheboatPhyscisHand")
+        {
+            if (setGun != null)
+            {
+                setGun.isAK74Grabbed = true;
+            }    
+        }
+        for (int i = 0; i < secondGrabPoints.Length; i++)
+        {
+            if(secondGrabPoints[i].activeSelf == false)
+            {
+                secondGrabPoints[i].SetActive(true);
+            }   
+        }
     }
 
     public void ReleaseGun()
     {
-        if (setGun != null)
-            setGun.isAK74Grabbed = false;
+        if (gameObject.scene.name == "FPSUnderWater")
+        {
+            if (swimmer != null)
+            {
+                swimmer.isGunGrabbed = false;
+            }
+        }
+        else if (gameObject.scene.name == "FPSontheboatPhyscisHand")
+        {
+            if (setGun != null)
+            {
+                setGun.isAK74Grabbed = false;
+            }
+        }
+        for (int i = 0; i < secondGrabPoints.Length; i++)
+        {
+            if (secondGrabPoints[i].activeSelf == true)
+            {
+                secondGrabPoints[i].SetActive(false);
+            }
+        }
     }
 
     public void Fire()

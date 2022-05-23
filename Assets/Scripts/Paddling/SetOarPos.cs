@@ -8,6 +8,7 @@ public class SetOarPos : MonoBehaviour
 {
     public XRController rightHand;
     public Transform oarPos;
+    public GameObject secondGrabPoint;
     private bool isPressed = false;
     private bool wasPressed = false;
     private bool isKinematice = true;
@@ -16,6 +17,7 @@ public class SetOarPos : MonoBehaviour
     private void Start()
     {
         rigid = gameObject.GetComponent<Rigidbody>();
+        secondGrabPoint.SetActive(false);
     }
 
     private void Update()
@@ -44,6 +46,18 @@ public class SetOarPos : MonoBehaviour
         if(isKinematice == true)
         {
             isKinematice = false;
+        }
+        if(secondGrabPoint.activeSelf == false)
+        {
+            secondGrabPoint.SetActive(true);
+        }
+    }
+
+    public void SecondGrabPointDisabled()
+    {
+        if(secondGrabPoint.activeSelf == true)
+        {
+            secondGrabPoint.SetActive(false);
         }
     }
 }

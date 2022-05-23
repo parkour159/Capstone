@@ -32,6 +32,9 @@ public class Swimmer : MonoBehaviour
 
 	Rigidbody _rigidbody;
 	float _cooldownTimer;
+
+	[HideInInspector] public bool isGunGrabbed;
+
 	void Awake()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
@@ -43,14 +46,12 @@ public class Swimmer : MonoBehaviour
 	{
 		_cooldownTimer += Time.fixedDeltaTime;
 
-		bool leftGrip = false;
-		bool rightGrip = false;
-
 		// 너무 빠르게 연속해서 젓지 못하도록 젓는 사이에 최소의 텀을 둠.
-		if (_cooldownTimer > minTimeBetweenStrokes)
+		// 총을 잡고 있을 때는 수영 하지 못함.
+		if (_cooldownTimer > minTimeBetweenStrokes && isGunGrabbed == false)
         {
-			if(leftController.inputDevice.TryGetFeatureValue(CommonUsages.gripButton, out leftGrip) && leftGrip
-			&& rightController.inputDevice.TryGetFeatureValue(CommonUsages.gripButton, out rightGrip) && rightGrip)
+			if(leftController.inputDevice.TryGetFeatureValue(CommonUsages.gripButton, out bool leftGrip) && leftGrip
+			&& rightController.inputDevice.TryGetFeatureValue(CommonUsages.gripButton, out bool rightGrip) && rightGrip)
 			{
 				InputDevices.GetDeviceAtXRNode(leftController.controllerNode).TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 leftHandVelocity);
 				InputDevices.GetDeviceAtXRNode(rightController.controllerNode).TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 rightHandVelocity);
